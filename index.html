@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Konfio</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+
+    <nav class="navbar navbar-light" style="background-color: #7465cb">
+          <a class="navbar-brand" href="https://konfio.mx/" title="Konfío: préstamos para negocios">
+            <img src="konfio_Logo blanco.png" width="150" alt="">
+          </a>
+          <a style="color:white" class="font-italic h2" style="font-family:serif" >
+            Solicitud de Crédito
+          </a>
+    </nav>
+    <br>
+  <div class="container">
+  <div id="formulario">
+      <div class="row justify-content-md-center">
+          <fb:login-button scope="public_profile,email,read_insights" onlogin="checkLoginState();">
+          </fb:login-button>
+      </div>
+      <br>
+      <div class="form-group row justify-content-md-center">
+        <label class="col col-sm-3 col-form-label">Nombre:</label>
+        <div class="col col-sm-3">
+          <input type="text" class="form-control" id="nombre" placeholder="Nombre Apellidos">
+        </div>
+      </div>
+      <div class="form-group row justify-content-md-center">
+        <label class="col col-sm-3 col-form-label">Puntos del buró de credito:</label>
+        <div class="col col-sm-3 input-group mb-3">
+          <input type="number" class="form-control border" min="0" max="100" id="buro" placeholder="00" onblur="puntos(this)">
+          <div class="input-group-append">
+            <span class="input-group-text" >/ 100</span>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row justify-content-md-center">
+        <label class="col col-sm-3 col-form-label">Puntos del SAT:</label>
+        <div class="col col-sm-3 input-group mb-3">
+          <input type="number" class="form-control border" min="0" max="100" id="sat" placeholder="00" onblur="puntos(this)" required>
+          <div class="input-group-append">
+            <span class="input-group-text" >/ 100</span>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row justify-content-md-center">
+        <label class="col col-sm-3 col-form-label">Ingreso Mensual:</label>
+        <div class="col col-sm-3 input-group mb-3">
+          <div class="input-group-append">
+            <span class="input-group-text">$</span>
+          </div>
+          <input type="number" class="form-control border " min="0" placeholder="75000" id="ingreso" onblur="naturales(this)" required></input>
+        </div>
+      </div>
+      <div class="form-group row justify-content-md-center">
+        <label class="col col-sm-3 col-form-label">Pedido de prestamo:</label>
+        <div class="col col-sm-3 input-group mb-3">
+          <div class="input-group-append">
+            <span class="input-group-text">$</span>
+          </div>
+          <input type="number" class="form-control border " min="0" placeholder="400000" id="pedido"  onblur="naturales(this)" required></input>
+        </div>
+      </div>
+      <div class="form-group row justify-content-md-center">
+        <label class="col col-sm-3 col-form-label">Propuesta de Pago:</label>
+        <div class="col col-sm-3 input-group mb-3">
+          <input type="number" class="form-control border" id="propuesta" placeholder="24" onblur="naturales(this)" required>
+          <div class="input-group-append">
+            <span class="input-group-text" >meses</span>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-md-center">
+        <button class="btn btn-primary col-md-auto" style="background-color: #7465cb" onclick="enviarDatos($('#nombre').val(),$('#buro').val(),$('#sat').val(),$('#ingreso').val(),$('#pedido').val(),$('#propuesta').val());">Enviar Formulario</button>
+      </div>
+  </div>
+  <!-- <div id="saludo" ></div>
+  <br/>
+  <div id="cotizacion"> </div>
+  <br/>
+  <div id="informacion"></div>
+  <br/>
+  <div>
+    <button class="btn btn-primary col-md-auto" onclick="fin();" id="botonFin">Finalizar Proceso</button>
+  </div> -->
+  <div class="card bg-white text-black" id="cartaFin" >
+    <img src="" class="card-img" alt="">
+    <div class="card-img-overlay">
+        <h5 class="card-title" id="saludo"></h5>
+        <p class="card-text" id="cotizacion"></p>
+        <p class="card-text" id="informacion"></p>
+        <button class="btn btn-primary col-md-auto" style="background-color: #7465cb" onclick="fin();" id="botonFin">Finalizar Proceso</button>
+    </div>
+  </div>
+  </div>
+  </body>
+  <script src="https://code.jquery.com/jquery-3.4.0.min.js" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="request.js" charset="utf-8"></script>
+  <script src="face-login.js" charset="utf-8"></script>
+  <script>
+    $("#cartaFin").hide();
+  </script>
+</html>

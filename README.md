@@ -13,3 +13,7 @@ El proyecto busca solucionar las necesidades de las pequeñas y medianas empresa
 - Ibañez Guzman Osvaldo
 - Martinez Vazquez Brayan Alexis
 - van der Werff Pieter Alexander
+
+### Nota IMPORTANTE
+
+- El archivo Lambda que utilizamos se encuentra con el nombre de lambda.js, cabe aclarar que este es solo una copia del que se encuentra en el servicio de AWS.

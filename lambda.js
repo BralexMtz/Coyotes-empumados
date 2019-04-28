@@ -8,6 +8,7 @@ exports.handler = async (event,context,callback) => {
     var meses = parseFloat(event.propuestaPago);
     console.log(event)
 
+
     var puntos = (puntosBuro+puntoSAT)/2;
     var interes;
     var caso=0;

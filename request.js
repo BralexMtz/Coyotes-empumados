@@ -1,5 +1,5 @@
 function muestra(arregloFin){
-   console.log(arregloFin);
+
    $("#saludo").html("Bienvenido "+arregloFin["nom"]);
    $("#formulario").hide();
    $("#cartaFin").show();
